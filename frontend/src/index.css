@@ -1,0 +1,43 @@
+:root {
+  --gm-amarelo: #ffc107;
+  --gm-escuro: #212529;
+}
+
+body {
+  background-color: #f4f5f7;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.conteudo-principal {
+  padding: 1.5rem;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.table th {
+  white-space: nowrap;
+}
+
+.nav-tabs .nav-link {
+  cursor: pointer;
+}
+
+/* Telas de login e cadastro */
+.tela-auth {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, #212529, #495057);
+}
+
+.tela-auth-card {
+  width: 100%;
+  max-width: 420px;
+}

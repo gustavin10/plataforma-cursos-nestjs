@@ -1,0 +1,37 @@
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
+import { CreateMatriculaDto } from './dto/create-matricula.dto';
+import { UpdateMatriculaDto } from './dto/update-matricula.dto';
+
+@Injectable()
+export class MatriculasService {
+  constructor(private prisma: PrismaService) {}
+
+  create(createMatriculaDto: CreateMatriculaDto) {
+    return this.prisma.matricula.create({ data: createMatriculaDto });
+  }
+
+  findAll() {
+    return this.prisma.matricula.findMany({ orderBy: { id: 'asc' } });
+  }
+
+  async findOne(id: number) {
+    const matricula = await this.prisma.matricula.findUnique({ where: { id } });
+    if (!matricula)
+      throw new NotFoundException(
+        `Registro de matrícula #${id} não encontrado.`,
+      );
+    return matricula;
+  }
+
+  update(id: number, updateMatriculaDto: UpdateMatriculaDto) {
+    return this.prisma.matricula.update({
+      where: { id },
+      data: updateMatriculaDto,
+    });
+  }
+
+  remove(id: number) {
+    return this.prisma.matricula.delete({ where: { id } });
+  }
+}

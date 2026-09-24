@@ -1,0 +1,25 @@
+# Dependências
+node_modules/
+
+# Build
+dist/
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+
+# Variáveis de ambiente (contêm senha do banco e JWT_SECRET)
+.env
+.env.local
+
+# Cliente Prisma gerado (recriado com: npx prisma generate)
+backend/src/generated/
+
+# Testes
+coverage/

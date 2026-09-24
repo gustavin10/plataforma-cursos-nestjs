@@ -1,0 +1,499 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nomeCompleto": "Ana Souza",
+      "email": "ana.souza@email.com",
+      "senhaHash": "hash_ana",
+      "perfil": "administrador",
+      "dataCadastro": "2025-01-10"
+    },
+    {
+      "id": 2,
+      "nomeCompleto": "Carlos Pereira",
+      "email": "carlos.pereira@email.com",
+      "senhaHash": "hash_carlos",
+      "perfil": "instrutor",
+      "dataCadastro": "2025-02-05"
+    },
+    {
+      "id": 3,
+      "nomeCompleto": "Mariana Lima",
+      "email": "mariana.lima@email.com",
+      "senhaHash": "hash_mariana",
+      "perfil": "instrutor",
+      "dataCadastro": "2025-02-12"
+    },
+    {
+      "id": 4,
+      "nomeCompleto": "João Oliveira",
+      "email": "joao.oliveira@email.com",
+      "senhaHash": "hash_joao",
+      "perfil": "aluno",
+      "dataCadastro": "2025-03-01"
+    },
+    {
+      "id": 5,
+      "nomeCompleto": "Beatriz Santos",
+      "email": "beatriz.santos@email.com",
+      "senhaHash": "hash_beatriz",
+      "perfil": "aluno",
+      "dataCadastro": "2025-03-15"
+    },
+    {
+      "id": 6,
+      "nomeCompleto": "Pedro Costa",
+      "email": "pedro.costa@email.com",
+      "senhaHash": "hash_pedro",
+      "perfil": "aluno",
+      "dataCadastro": "2025-04-02"
+    },
+    {
+      "nomeCompleto": "teste",
+      "email": "teste@gmail.com",
+      "senhaHash": "123456",
+      "perfil": "instrutor",
+      "dataCadastro": "2026-06-06",
+      "id": 7
+    },
+    {
+      "nomeCompleto": "teste 22",
+      "email": "teste2@gmail.com",
+      "senhaHash": "123456",
+      "perfil": "aluno",
+      "dataCadastro": "2026-06-06",
+      "id": 8
+    }
+  ],
+  "categorias": [
+    {
+      "id": 1,
+      "nome": "Programação",
+      "descricao": "Cursos de desenvolvimento de software."
+    },
+    {
+      "id": 2,
+      "nome": "Design",
+      "descricao": "Cursos de UX/UI e design gráfico."
+    },
+    {
+      "id": 3,
+      "nome": "Dados",
+      "descricao": "Cursos de análise e ciência de dados."
+    },
+    {
+      "nome": "culinaria",
+      "descricao": "teste comida",
+      "id": 4
+    }
+  ],
+  "cursos": [
+    {
+      "id": 1,
+      "titulo": "React do Zero ao Avançado",
+      "descricao": "Construa aplicações modernas com React e TypeScript.",
+      "idInstrutor": 2,
+      "idCategoria": 1,
+      "nivel": "Intermediário",
+      "dataPublicacao": "2025-03-10",
+      "totalAulas": 24,
+      "totalHoras": 18
+    },
+    {
+      "id": 2,
+      "titulo": "Fundamentos de UX Design",
+      "descricao": "Princípios de usabilidade e experiência do usuário.",
+      "idInstrutor": 3,
+      "idCategoria": 2,
+      "nivel": "Iniciante",
+      "dataPublicacao": "2025-03-20",
+      "totalAulas": 16,
+      "totalHoras": 10
+    },
+    {
+      "id": 3,
+      "titulo": "Python para Análise de Dados",
+      "descricao": "Manipulação e visualização de dados com Python.",
+      "idInstrutor": 2,
+      "idCategoria": 3,
+      "nivel": "Avançado",
+      "dataPublicacao": "2025-04-05",
+      "totalAulas": 30,
+      "totalHoras": 25
+    },
+    {
+      "titulo": "comida curso",
+      "descricao": "teste comida",
+      "idInstrutor": 7,
+      "idCategoria": 4,
+      "nivel": "Intermediário",
+      "dataPublicacao": "2026-06-06",
+      "totalAulas": 10,
+      "totalHoras": 110,
+      "id": 4
+    }
+  ],
+  "modulos": [
+    {
+      "id": 1,
+      "idCurso": 1,
+      "titulo": "Introdução ao React",
+      "ordem": 1
+    },
+    {
+      "id": 2,
+      "idCurso": 1,
+      "titulo": "Hooks e Estado",
+      "ordem": 2
+    },
+    {
+      "id": 3,
+      "idCurso": 1,
+      "titulo": "Roteamento e Consumo de API",
+      "ordem": 3
+    },
+    {
+      "id": 4,
+      "idCurso": 2,
+      "titulo": "Princípios de Usabilidade",
+      "ordem": 1
+    },
+    {
+      "id": 5,
+      "idCurso": 3,
+      "titulo": "NumPy e Pandas",
+      "ordem": 1
+    },
+    {
+      "idCurso": 4,
+      "titulo": "teste modulo",
+      "ordem": 1,
+      "id": 6
+    },
+    {
+      "idCurso": 4,
+      "titulo": "teste 2 modulo",
+      "ordem": 2,
+      "id": 7
+    }
+  ],
+  "aulas": [
+    {
+      "id": 1,
+      "idModulo": 1,
+      "titulo": "O que é React?",
+      "tipoConteudo": "Vídeo",
+      "urlConteudo": "https://exemplo.com/aula1",
+      "duracaoMinutos": 12,
+      "ordem": 1
+    },
+    {
+      "id": 2,
+      "idModulo": 1,
+      "titulo": "Criando o primeiro componente",
+      "tipoConteudo": "Vídeo",
+      "urlConteudo": "https://exemplo.com/aula2",
+      "duracaoMinutos": 18,
+      "ordem": 2
+    },
+    {
+      "id": 3,
+      "idModulo": 2,
+      "titulo": "useState na prática",
+      "tipoConteudo": "Vídeo",
+      "urlConteudo": "https://exemplo.com/aula3",
+      "duracaoMinutos": 22,
+      "ordem": 1
+    },
+    {
+      "id": 4,
+      "idModulo": 2,
+      "titulo": "Quiz: Hooks",
+      "tipoConteudo": "Quiz",
+      "urlConteudo": "https://exemplo.com/quiz1",
+      "duracaoMinutos": 10,
+      "ordem": 2
+    },
+    {
+      "id": 5,
+      "idModulo": 3,
+      "titulo": "React Router",
+      "tipoConteudo": "Vídeo",
+      "urlConteudo": "https://exemplo.com/aula5",
+      "duracaoMinutos": 20,
+      "ordem": 1
+    },
+    {
+      "id": 6,
+      "idModulo": 4,
+      "titulo": "Leis de Gestalt",
+      "tipoConteudo": "Texto",
+      "urlConteudo": "https://exemplo.com/texto1",
+      "duracaoMinutos": 15,
+      "ordem": 1
+    },
+    {
+      "idModulo": 6,
+      "titulo": "teste aula",
+      "tipoConteudo": "Vídeo",
+      "urlConteudo": "https://github.com/gustavin10/plataforma-cursos-completo",
+      "duracaoMinutos": 110,
+      "ordem": 1,
+      "id": 7
+    }
+  ],
+  "matriculas": [
+    {
+      "id": 1,
+      "idUsuario": 4,
+      "idCurso": 1,
+      "dataMatricula": "2025-03-12",
+      "dataConclusao": null
+    },
+    {
+      "id": 2,
+      "idUsuario": 5,
+      "idCurso": 1,
+      "dataMatricula": "2025-03-18",
+      "dataConclusao": "2025-05-20"
+    },
+    {
+      "id": 3,
+      "idUsuario": 5,
+      "idCurso": 2,
+      "dataMatricula": "2025-03-25",
+      "dataConclusao": null
+    },
+    {
+      "id": 4,
+      "idUsuario": 6,
+      "idCurso": 3,
+      "dataMatricula": "2025-04-10",
+      "dataConclusao": null
+    },
+    {
+      "idUsuario": 8,
+      "idCurso": 4,
+      "dataMatricula": "2026-06-06",
+      "dataConclusao": "2026-06-20",
+      "id": 5
+    }
+  ],
+  "progressoAulas": [
+    {
+      "id": 1,
+      "idUsuario": 4,
+      "idAula": 1,
+      "dataConclusao": "2025-03-13",
+      "status": "Concluído"
+    },
+    {
+      "id": 2,
+      "idUsuario": 4,
+      "idAula": 2,
+      "dataConclusao": null,
+      "status": "Em Progresso"
+    },
+    {
+      "id": 3,
+      "idUsuario": 5,
+      "idAula": 1,
+      "dataConclusao": "2025-03-19",
+      "status": "Concluído"
+    },
+    {
+      "id": 4,
+      "idUsuario": 5,
+      "idAula": 3,
+      "dataConclusao": "2025-04-01",
+      "status": "Concluído"
+    },
+    {
+      "idUsuario": 8,
+      "idAula": 7,
+      "dataConclusao": null,
+      "status": "Em Progresso",
+      "id": 5
+    }
+  ],
+  "avaliacoes": [
+    {
+      "id": 1,
+      "idUsuario": 5,
+      "idCurso": 1,
+      "nota": 5,
+      "comentario": "Curso excelente, muito didático!",
+      "dataAvaliacao": "2025-05-21"
+    },
+    {
+      "id": 2,
+      "idUsuario": 4,
+      "idCurso": 1,
+      "nota": 4,
+      "comentario": "Muito bom, mas poderia ter mais exercícios.",
+      "dataAvaliacao": "2025-05-25"
+    },
+    {
+      "id": 3,
+      "idUsuario": 6,
+      "idCurso": 3,
+      "nota": 5,
+      "comentario": null,
+      "dataAvaliacao": "2025-05-30"
+    },
+    {
+      "idUsuario": 8,
+      "idCurso": 4,
+      "nota": 5,
+      "comentario": "muito bom",
+      "dataAvaliacao": "2026-06-06",
+      "id": 4
+    }
+  ],
+  "trilhas": [
+    {
+      "id": 1,
+      "titulo": "Desenvolvedor Front-End",
+      "descricao": "Trilha completa para se tornar dev front-end.",
+      "idCategoria": 1
+    },
+    {
+      "id": 2,
+      "titulo": "Carreira em Dados",
+      "descricao": "Do básico ao avançado em ciência de dados.",
+      "idCategoria": 3
+    }
+  ],
+  "trilhasCursos": [
+    {
+      "id": 1,
+      "idTrilha": 1,
+      "idCurso": 2,
+      "ordem": 1
+    },
+    {
+      "id": 2,
+      "idTrilha": 1,
+      "idCurso": 1,
+      "ordem": 2
+    },
+    {
+      "id": 3,
+      "idTrilha": 2,
+      "idCurso": 3,
+      "ordem": 1
+    }
+  ],
+  "certificados": [
+    {
+      "id": 1,
+      "idUsuario": 5,
+      "idCurso": 1,
+      "idTrilha": null,
+      "codigoVerificacao": "GM-A1B2-C3D4-E5F6",
+      "dataEmissao": "2025-05-21"
+    },
+    {
+      "idUsuario": 8,
+      "idCurso": 4,
+      "idTrilha": null,
+      "codigoVerificacao": "GM-40LV-TUUF-DY4U",
+      "dataEmissao": "2026-06-06",
+      "id": 2
+    }
+  ],
+  "planos": [
+    {
+      "id": 1,
+      "nome": "Mensal",
+      "descricao": "Acesso a todos os cursos por 1 mês.",
+      "preco": 49.9,
+      "duracaoMeses": 1
+    },
+    {
+      "id": 2,
+      "nome": "Trimestral",
+      "descricao": "Acesso a todos os cursos por 3 meses.",
+      "preco": 129.9,
+      "duracaoMeses": 3
+    },
+    {
+      "id": 3,
+      "nome": "Anual",
+      "descricao": "Acesso a todos os cursos por 12 meses com desconto.",
+      "preco": 399.9,
+      "duracaoMeses": 12
+    },
+    {
+      "nome": "teste",
+      "descricao": "melhor plano",
+      "preco": 1000,
+      "duracaoMeses": 1,
+      "id": 4
+    }
+  ],
+  "assinaturas": [
+    {
+      "id": 1,
+      "idUsuario": 4,
+      "idPlano": 2,
+      "dataInicio": "2025-03-12",
+      "dataFim": "2025-06-12"
+    },
+    {
+      "id": 2,
+      "idUsuario": 5,
+      "idPlano": 3,
+      "dataInicio": "2025-03-18",
+      "dataFim": "2026-03-18"
+    },
+    {
+      "id": 3,
+      "idUsuario": 6,
+      "idPlano": 1,
+      "dataInicio": "2025-04-10",
+      "dataFim": "2025-05-10"
+    },
+    {
+      "idUsuario": 8,
+      "idPlano": 4,
+      "dataInicio": "2026-06-06",
+      "dataFim": "2026-07-06",
+      "id": 4
+    }
+  ],
+  "pagamentos": [
+    {
+      "id": 1,
+      "idAssinatura": 1,
+      "valorPago": 129.9,
+      "dataPagamento": "2025-03-12",
+      "metodoPagamento": "Cartão de Crédito",
+      "idTransacaoGateway": "TXN-1741800000-1234"
+    },
+    {
+      "id": 2,
+      "idAssinatura": 2,
+      "valorPago": 399.9,
+      "dataPagamento": "2025-03-18",
+      "metodoPagamento": "Pix",
+      "idTransacaoGateway": "TXN-1742300000-5678"
+    },
+    {
+      "id": 3,
+      "idAssinatura": 3,
+      "valorPago": 49.9,
+      "dataPagamento": "2025-04-10",
+      "metodoPagamento": "Boleto",
+      "idTransacaoGateway": "TXN-1744300000-9012"
+    },
+    {
+      "idAssinatura": 4,
+      "valorPago": 1000,
+      "dataPagamento": "2026-06-06",
+      "metodoPagamento": "Cartão de Crédito",
+      "idTransacaoGateway": "TXN-1780768885314-7607",
+      "id": 4
+    }
+  ]
+}

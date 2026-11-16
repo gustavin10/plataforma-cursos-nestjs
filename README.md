@@ -19,7 +19,7 @@ autenticação **JWT** e documentação **Swagger**.
 plataforma-cursos-nestjs/
 ├── backend/                  # API NestJS
 │   ├── prisma/
-│   │   ├── schema.prisma     # Modelagem das 14 tabelas
+│   │   ├── schema.prisma     # Modelagem das 15 tabelas
 │   │   ├── migrations/       # Migrations geradas pelo Prisma
 │   │   ├── seed.ts           # Popula o banco com os dados iniciais
 │   │   └── dados-iniciais.json
@@ -48,11 +48,11 @@ plataforma-cursos-nestjs/
 
 Pré-requisitos: **Node.js** e **Docker Desktop** (ou um PostgreSQL instalado localmente).
 
-### 1. Banco de dados
+### 1. Banco de dados e Kafka
 
 ```bash
 cd backend
-docker compose up -d
+docker compose up -d   # sobe o PostgreSQL e o Kafka
 ```
 
 ### 2. Backend (NestJS) — porta 3000
@@ -108,9 +108,35 @@ Todas seguem o padrão `POST /recurso`, `GET /recurso`, `GET /recurso/:id`, `PAT
 `progresso-aulas`, `avaliacoes`, `certificados`, `planos`, `assinaturas`, `pagamentos` — além de
 `POST /auth/login` e `GET /auth/perfil`.
 
+### Área do aluno (app mobile)
+
+Usadas pelo [app mobile](https://github.com/gustavin10/app-mobile-TCS). O aluno é identificado pelo token JWT.
+
+| Rota | Descrição |
+|---|---|
+| `GET /aluno/trilhas` | Trilhas com os cursos em ordem |
+| `GET /aluno/cursos` | Catálogo com categoria e instrutor |
+| `GET /aluno/cursos/:id` | Curso com módulos e aulas, se o aluno está matriculado e a assinatura ativa |
+| `GET /aluno/aulas/:id` | Aula (somente matriculados, senão `403`) |
+| `GET /aluno/meus-cursos` | Cursos em que o aluno está matriculado |
+| `POST /aluno/matriculas` | Matricula no curso. Sem assinatura ativa, exige `idPlano` + `metodoPagamento` e cria Assinatura + Pagamento |
+| `GET /notificacoes` / `PATCH /notificacoes/:id/lida` | Notificações do usuário logado |
+
+## Mensageria (Kafka)
+
+Sempre que um usuário é cadastrado (`POST /usuarios`, pelo site ou pelo app):
+
+1. O `UsuariosService` (**produtor**) publica no tópico `usuario-cadastrado`.
+2. O `NotificacoesConsumer` (**consumidor**, grupo `servico-notificacoes`) recebe a mensagem e grava a
+   notificação de boas-vindas na tabela `notificacoes`.
+3. O app mostra a notificação ao usuário.
+
+Código em `backend/src/kafka/` e `backend/src/notificacoes/`. Se o Kafka estiver fora do ar, a API continua
+funcionando e tenta reconectar a cada 5s. Endereço do broker: `KAFKA_BROKER` no `.env` (padrão `localhost:9092`).
+
 ## Persistência e regras do banco
 
-- 14 tabelas relacionadas por chaves estrangeiras (ver `backend/prisma/schema.prisma`).
+- 15 tabelas relacionadas por chaves estrangeiras (ver `backend/prisma/schema.prisma`).
 - `email` do usuário, `codigoVerificacao` do certificado e `idTransacaoGateway` do pagamento são únicos.
 - Exclusão em cascata onde faz sentido (curso → módulos → aulas; trilha → vínculos; assinatura → pagamentos).
 - Os erros do banco viram respostas amigáveis: e-mail duplicado → `409`, registro em uso → `409`, não encontrado → `404`.

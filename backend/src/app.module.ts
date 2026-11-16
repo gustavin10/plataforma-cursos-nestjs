@@ -15,6 +15,9 @@ import { CertificadosModule } from './certificados/certificados.module';
 import { PlanosModule } from './planos/planos.module';
 import { AssinaturasModule } from './assinaturas/assinaturas.module';
 import { PagamentosModule } from './pagamentos/pagamentos.module';
+import { KafkaModule } from './kafka/kafka.module';
+import { NotificacoesModule } from './notificacoes/notificacoes.module';
+import { AlunoModule } from './aluno/aluno.module';
 
 @Module({
   imports: [
@@ -37,6 +40,10 @@ import { PagamentosModule } from './pagamentos/pagamentos.module';
     PlanosModule,
     AssinaturasModule,
     PagamentosModule,
+    // Mensageria e área do aluno (app mobile)
+    KafkaModule,
+    NotificacoesModule,
+    AlunoModule,
   ],
 })
 export class AppModule {}

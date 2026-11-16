@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt'; // Biblioteca para hash de senha
 import { PrismaService } from '../prisma/prisma.service';
+import { KafkaService, TOPICOS } from '../kafka/kafka.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 
@@ -9,7 +10,10 @@ const SEM_SENHA = { senha: true } as const;
 
 @Injectable()
 export class UsuariosService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private kafka: KafkaService,
+  ) {}
 
   async create(createUsuarioDto: CreateUsuarioDto) {
     // Gera um salt e cria o hash da senha enviada pelo DTO
@@ -17,10 +21,21 @@ export class UsuariosService {
     const hash = await bcrypt.hash(createUsuarioDto.senha, salt);
 
     // Salva o usuário no banco com a senha criptografada
-    return this.prisma.usuario.create({
+    const usuario = await this.prisma.usuario.create({
       data: { ...createUsuarioDto, senha: hash },
       omit: SEM_SENHA,
     });
+
+    // PRODUTOR Kafka: avisa que um usuário foi cadastrado (pelo site ou pelo app).
+    // O consumidor do módulo de notificações gera a mensagem de boas-vindas.
+    await this.kafka.publicar(TOPICOS.USUARIO_CADASTRADO, String(usuario.id), {
+      idUsuario: usuario.id,
+      nomeCompleto: usuario.nomeCompleto,
+      email: usuario.email,
+      dataCadastro: usuario.dataCadastro,
+    });
+
+    return usuario;
   }
 
   findAll() {

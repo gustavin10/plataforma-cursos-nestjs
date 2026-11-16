@@ -28,6 +28,7 @@ model Usuario {
   avaliacoes        Avaliacao[]
   certificados      Certificado[]
   assinaturas       Assinatura[]
+  notificacoes      Notificacao[]
 
   @@map("usuarios")
 }
@@ -218,4 +219,19 @@ model Pagamento {
   assinatura Assinatura @relation(fields: [idAssinatura], references: [id], onDelete: Cascade)
 
   @@map("pagamentos")
+}
+
+// ==================== Notificações (geradas pelo consumidor Kafka) ====================
+
+model Notificacao {
+  id        Int      @id @default(autoincrement())
+  idUsuario Int
+  titulo    String
+  mensagem  String
+  lida      Boolean  @default(false)
+  criadaEm  DateTime @default(now())
+
+  usuario Usuario @relation(fields: [idUsuario], references: [id], onDelete: Cascade)
+
+  @@map("notificacoes")
 }
